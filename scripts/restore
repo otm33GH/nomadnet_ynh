@@ -16,26 +16,12 @@ ynh_restore "$install_dir"
 chown -R "$app:$app" "$install_dir"
 
 #=================================================
-# RESTORE SYSTEM CONFIGURATION
+# RESTORE THE APP DATA DIR
 #=================================================
-ynh_script_progression "Restoring system configurations related to $app..."
+ynh_script_progression "Restoring the app data directory..."
 
-ynh_restore "/etc/systemd/system/$app.service"
-systemctl enable "$app.service" --quiet
-
-ynh_restore "/etc/systemd/system/$app-rnsh.service"
-
-yunohost service add "$app" --description="Reticulum" --log="/var/log/$app/$app.log"
-
-mkdir -p "/var/log/"$app""
-ynh_restore "/etc/logrotate.d/$app"
-
-#=================================================
-# RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
-#=================================================
-ynh_script_progression "Reloading NGINX web server and $app's service..."
-
-ynh_systemctl --service="$app" --action="start"
+ynh_restore "$data_dir"
+chown -R "$app:$app" "$data_dir"
 
 #=================================================
 # END OF SCRIPT
