@@ -17,6 +17,8 @@ pushd $install_dir
     mkdir -p "$install_dir/.reticulum"
     chown "$app:$app" "$install_dir/.nomadnetwork"
     ynh_config_add --jinja --template=config.j2 --destination="$install_dir/.nomadnetwork/config"
+    ynh_config_add --template=wrapper --destination="$install_dir/nomadnet_ynh"
+
 popd
 
 #=================================================
