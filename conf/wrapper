@@ -1,5 +1,5 @@
 #!/bin/bash
-exec /var/www/nomadnet/venv/bin/nomadnet \
-    --config /var/www/nomadnet/.nomadnetwork \
-    --rnsconfig /var/www/nomadnet/.reticulum \
+exec $app/venv/bin/nomadnet \
+    --config $app/.nomadnetwork \
+    --rnsconfig $app/.reticulum \
     "$@"
