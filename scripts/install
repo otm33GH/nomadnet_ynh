@@ -30,9 +30,9 @@ pushd $install_dir
 
     ynh_config_add --template=wrapper --destination="$install_dir/nomadnet_ynh"
     chmod +x "$install_dir/nomadnet_ynh"
-
-
 popd
+
+systemctl restart reticulum
 
 #=================================================
 # END OF SCRIPT
