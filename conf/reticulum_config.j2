@@ -44,8 +44,8 @@
   # is the case, you can isolate different instances by
   # specifying a unique set of ports for each:
   
-  shared_instance_port = 37428
-  instance_control_port = 37429
+  shared_instance_port = {{ port_shared_instance }}
+  instance_control_port = {{ port_instance_control }}
 
   
   # If you want to explicitly use TCP for shared instance
