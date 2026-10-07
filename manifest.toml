@@ -35,10 +35,10 @@ ram.runtime = "50M"
 
 [install]
     [install.standalone]
-    ask.en = "Reticulum app is already installed"
-    ask.fr = "L'application Reticulumm  est déjà installée"
+    ask.en = "Reticulum app is not installed"
+    ask.fr = "L'application Reticulumm n'est pas installée"
     type = "boolean"
-    default = true
+    default = false
     
 [resources]
     [resources.system_user]
