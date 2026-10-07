@@ -47,7 +47,7 @@ ram.runtime = "50M"
     ask.fr = "Sélectionnez l'app Reticulum qui sera utilisée avec LXMF."
     help.en = "You need to have aan instance of Reticulum installed beforehand on your server."
     help.fr = "Vous devez avoir une instance de Reticulum préalablement installée sur votre serveur."
-    optional = true
+   # optional = true
     visible = "!standalone"
 
     [install.backbone_remote_enabled]
