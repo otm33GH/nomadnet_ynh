@@ -39,6 +39,55 @@ ram.runtime = "50M"
     ask.fr = "L'application Reticulumm n'est pas installée"
     type = "boolean"
     default = false
+
+    [install.backbone_remote_enabled]
+    ask.en = "Enable backbone client interface"
+    ask.fr = "Activer l'interface client backbone"
+    type = "boolean"
+    optional = true
+    visible = "standalone"
+    
+    [install.backbone_remote_target]
+    ask.en = "Remote target (backbone server)"
+    ask.fr = "Serveur backbone distant"
+    type = "string"
+    optional = true
+    visible = "standalone"
+
+    [install.backbone_remote_target_port]
+    ask.en = "Backbone remote target port"
+    ask.fr = "Port backbone du serveur cible"
+    type = "number"
+    optional = true
+    default = "4242"
+    min = 0
+    max = 65535
+    visible = "standalone"
+
+    [install.tcp_client_enabled]
+    ask.en = "Enable TCP client interface"
+    ask.fr = "Activer l'interface client TCP"
+    type = "boolean"
+    optional = true
+    visible = "standalone"
+
+    [install.tcp_client_target_host]
+    ask.en = "Target host"
+    ask.fr = "Serveur TCP distant"
+    type = "string"
+    optional = true
+    visible = "standalone"
+
+    [install.tcp_client_target_port]
+    ask.en = "TCP remote target port"
+    ask.fr = "Port TCP du serveur cible"
+    type = "number"
+    optional = true
+    default = "4243"
+    min = 0
+    max = 65535
+    visible = "standalone"
+
     
 [resources]
     [resources.system_user]
