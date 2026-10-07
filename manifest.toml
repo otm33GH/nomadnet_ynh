@@ -38,7 +38,7 @@ ram.runtime = "50M"
     ask.en = "Standalone installation (i.e Reticulum app is not installed)"
     ask.fr = "Installation standalone (= l'application Reticulum n'est pas déjà installée)"
     type = "boolean"
-    default = false
+    default = true
 
     [install.backbone_remote_enabled]
     ask.en = "Enable backbone client interface"
