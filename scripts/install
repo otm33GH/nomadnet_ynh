@@ -14,9 +14,9 @@ source /usr/share/yunohost/helpers
 hostname=$(hostname)
 
 if [ "$standalone" -eq 0 ] && yunohost app list | grep -q "name: Reticulum"; then
-    rpc_key=$(ynh_app_setting_get --app=reticulum --key=rpc_key)
-    port_shared_instance=$(ynh_app_setting_get --app=reticulum --key=port_shared_instance)
-    port_instance_control=$(ynh_app_setting_get --app=reticulum --key=port_instance_control)
+    rpc_key=$(ynh_app_setting_get --app=$reticulum --key=rpc_key)
+    port_shared_instance=$(ynh_app_setting_get --app=$reticulum --key=port_shared_instance)
+    port_instance_control=$(ynh_app_setting_get --app=$reticulum --key=port_instance_control)
 fi
 
 if [ "$standalone" -eq 1 ] && yunohost app list | grep -q "name: Reticulum"; then
@@ -40,7 +40,7 @@ pushd $install_dir
 popd
 
 if [ "$standalone" -eq 0 ]; then
-systemctl restart reticulum
+systemctl restart $reticulum
 fi
 
 #=================================================
