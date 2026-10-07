@@ -39,7 +39,9 @@ pushd $install_dir
     chmod +x "$install_dir/nomadnet_ynh"
 popd
 
+if [ "$standalone" -eq 0 ]; then
 systemctl restart reticulum
+fi
 
 #=================================================
 # END OF SCRIPT
