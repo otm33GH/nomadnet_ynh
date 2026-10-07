@@ -23,6 +23,10 @@ ynh_script_progression "Restoring the app data directory..."
 ynh_restore "$data_dir"
 chown -R "$app:$app" "$data_dir"
 
+if [ "$standalone" -eq 0 ]; then
+systemctl restart reticulum
+fi
+
 #=================================================
 # END OF SCRIPT
 #=================================================
