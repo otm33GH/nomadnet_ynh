@@ -24,7 +24,7 @@ ynh_restore "$data_dir"
 chown -R "$app:$app" "$data_dir"
 
 if [ "$standalone" -eq 0 ]; then
-systemctl restart reticulum
+systemctl restart $reticulum
 fi
 
 #=================================================
