@@ -15,7 +15,7 @@ pushd $install_dir
 popd
 
 if [ "$standalone" -eq 0 ]; then
-systemctl restart reticulum
+systemctl restart $reticulum
 fi
 
 #=================================================
