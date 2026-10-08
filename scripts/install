@@ -13,7 +13,11 @@ source /usr/share/yunohost/helpers
 
 hostname=$(hostname)
 
-if [ "$standalone" -eq 0 ] && yunohost app list | grep -q "name: Reticulum"; then
+if [[ "$standalone" -eq 0 && -z "$reticulum" ]]; then
+    ynh_die "You did not chose a reticulum instance"
+fi
+
+if [ "$standalone" -eq 0 ]; then
     rpc_key=$(ynh_app_setting_get --app=$reticulum --key=rpc_key)
     port_shared_instance=$(ynh_app_setting_get --app=$reticulum --key=port_shared_instance)
     port_instance_control=$(ynh_app_setting_get --app=$reticulum --key=port_instance_control)
