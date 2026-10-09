@@ -37,24 +37,36 @@
   # instance names for each. On platforms supporting domain
   # sockets, this can be done with the instance_name option:
 
-  instance_name = {{ hostname }}
+  instance_name = {{ hostname }}{{ reticulum }}
 
 
   # Some platforms don't support domain sockets, and if that
   # is the case, you can isolate different instances by
   # specifying a unique set of ports for each:
-  
+
+  {% if standalone == '0' %}
   shared_instance_port = {{ port_shared_instance }}
   instance_control_port = {{ port_instance_control }}
-
+  shared_instance_type = tcp
+  {% else %}
+  # shared_instance_port = 37428
+  # instance_control_port = 37429
+  # shared_instance_type = tcp
+  {% endif %}
   
   # If you want to explicitly use TCP for shared instance
   # communication, instead of domain sockets, this is also
   # possible, by using the following option:
   
-  shared_instance_type = tcp
-  rpc_key = {{ rpc_key }}
+
   
+  {% if standalone == '0' %}
+  rpc_key = {{ rpc_key }}
+  {% else %}
+  # rpc_key =
+  {% endif %}
+  
+    
   # You can configure whether Reticulum should discover
   # available interfaces from other Transport Instances over
   # the network. If this option is enabled, Reticulum will
@@ -152,3 +164,24 @@
     # should be enabled by default in almost any OS. See
     # the Reticulum Manual for more configuration options.
 
+{% if standalone == '1' %}
+  [[Default Interface]]
+      type = AutoInterface
+      enabled = Yes
+  
+  # Backbone interface : this interface type is currently only supported on Linux and Android.
+    [[Backbone_Remote]]
+      type = BackboneInterface
+      enabled = {{ backbone_remote_enabled | default("No", true) }}
+      remote = {{ backbone_remote_target | default("127.0.0.1", true) }}
+      target_port = {{ backbone_remote_target_port | default("4242", true) }}  
+
+  # TCP Client
+  
+      # target_host can be a hostname or an IPv4 or IPv6 address.
+    [[TCP_Client_Interface]]
+      type = TCPClientInterface
+      enabled = {{ tcp_client_enabled | default("No", true) }}
+      target_host = {{ tcp_client_target_host | default("127.0.0.1", true) }}
+      target_port = {{ tcp_client_target_port | default("4242", true) }}  
+  {% endif %}
