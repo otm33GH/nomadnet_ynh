@@ -9,7 +9,7 @@ description.fr = "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce
 
 version = "1.4.3~ynh1"
 
-maintainers = []
+maintainers = ["otm33GH"]
 
 [upstream]
 license = "AGPL-3.0-only" # you can see the available licenses identifiers list here: https://spdx.org/licenses/
@@ -100,11 +100,13 @@ ram.runtime = "50M"
 
     
 [resources]
+
 [resources.sources.main]
     url = " https://github.com/markqvist/NomadNet/archive/refs/tags/1.4.3.tar.gz"
     sha256 = "9882d17feb80d13c3712019d4960bffaa250e52bb592317f8c10a9c40b35ecd0"
-    autoupdate.strategy = "latest_gitea_tag"
+    autoupdate.strategy = "latest_github_tag"
     prefetch = false
+    
     [resources.system_user]
 
     [resources.install_dir]
