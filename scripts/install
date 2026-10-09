@@ -18,7 +18,8 @@ port_instance_control=$(ynh_app_setting_get --app=reticulum --key=port_instance_
 
 pushd $install_dir
     ynh_exec_as_app python3 -m venv "$install_dir/venv"
-    ynh_exec_as_app "$install_dir/venv/bin/pip" install nomadnet
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip
+    ynh_exec_as_app "$install_dir/venv/bin/pip" install nomadnet==$(ynh_app_upstream_version)
 
     mkdir -p "$install_dir/.nomadnetwork"
     chown "$app:$app" "$install_dir/.nomadnetwork"
