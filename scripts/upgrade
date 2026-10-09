@@ -11,10 +11,10 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 pushd $install_dir
-	ynh_safe_rm "$install_dir/venv"
+  	ynh_safe_rm "$install_dir/venv"
     ynh_exec_as_app python3 -m venv "$install_dir/venv"
     ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip
-	ynh_exec_as_app "$install_dir/venv/bin/pip" install --upgrade nomadnet==$(ynh_app_upstream_version)
+	  ynh_exec_as_app "$install_dir/venv/bin/pip" install --upgrade nomadnet==$(ynh_app_upstream_version)
 popd
 
 if [ "$standalone" -eq 0 ]; then
